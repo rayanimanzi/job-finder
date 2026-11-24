@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Finder</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Job Finder</h1>
+            <p>Search real job openings in Rwanda and around the world.</p>
+            <form id="search-form">
+                <input id="query" placeholder="e.g. software developer, nurse" maxlength="100">
+                <select id="country">
+                    <option value="rw">Rwanda</option>
+                    <option value="ug">Uganda</option>
+                    <option value="ke">Kenya</option>
+                    <option value="us">United States</option>
+                    <option value="gb">United Kingdom</option>
+                </select>
+                <select id="date-posted">
+                    <option value="all">Any time</option>
+                    <option value="today">Today</option>
+                    <option value="week">Last week</option>
+                    <option value="month">Last month</option>
+                </select>
+                <button id="search-btn">Search</button>
+                </form>
+            </header>
+            <main>
+                <div id="controls" class="hidden">
+                    <input id="filter-text" placeholder="Filter by title or company">
+                    <select id="filter-type"></select>
+                    <label><input id="filter-remote" type="checkbox"> Remote only </label>
+                    <select id="sort">
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="title">Title A-Z</option>
+                        <option value="company">CompanyA-Z</option>        
+                    </select>
+                </div>
+                <p id="status"> Type a job title and press Search.</p>
+                <p id="error" class="hidden"></p>
+                <div id="results"></div>
+                <button id="load-more" class="hidden">Load more jobs</button>
+                </main>
+                <footer>
+                    <p>Job data from the <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch">JSearch API</a> by OpenWeb Ninja.</p>
+                    <p id="server-info"></p>
+                    </footer>
+                <script src="app.js"></script>
+                </body>
+                </html>
+           
