@@ -89,7 +89,7 @@ function timeAgo(iso) {
 function formatSalary(job) {
     if (!job.minSalary && !job.maxSalary) return 'Salary not listed';
     const fmt = (n) => Math.round(n).toLocaleString();
-    const range - job.minSalary && job.maxSalary
+    const range = job.minSalary && job.maxSalary
       ? fmt(job.minSalary) + '-' + fmt(job.maxSalary)
       : fmt(job.minSalary || job.maxSalary);
       return range + (job.salaryPeriod ? ' / ' + job.salaryPeriod.toLowerCase() : '');
