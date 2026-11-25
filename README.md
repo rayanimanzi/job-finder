@@ -4,12 +4,12 @@ A web app that helps job seekers in Rwanda and beyond find real, current job ope
 
 
 **Live app (via load balancer):** http://35.176.40.4
-**Demo video:** [Link:]
+**Demo video:** [Link:https://www.loom.com/share/310d4a67322540fdb18faf4feef12a46]
 
 
 ## Features
 
--**Search** jobs by title or keyword, country (Rwanda, Kenya, Uganga, US,Uk) and date posted
+-**Search** jobs by title or keyword, country (Rwanda, Kenya, Uganda, US,Uk) and date posted
 - **Filter** result by text (title or company), job type and remote-only
 -**Sort**  by newest, oldest, title A-Z or company A-Z
 -**Load more** results using the API's pagination cursor
