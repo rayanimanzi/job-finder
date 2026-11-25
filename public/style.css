@@ -18,5 +18,7 @@ main { max-width: 900px; margin: 0 auto; padding:20px 16px; }
 .apply { display: inline-block; background: #1e3a8a; color: white; padding: 8px 14px; border-radius: 8px; text-decoration: none; }
 #load-more { display: block; margin: 0 auto; }
 footer { text-align: center; color: #64748b; font-size: 14px; padding: 20px; }
-
+.card-top { display: flex; gap: 12px; align-items: center; }
+.card-top img { width: 48px; height: 48px; object-fit: contain; border-radius: 8px; background: #f1f5f9; }
+.salary { font-weight: bold; color: #0f766e; }
 

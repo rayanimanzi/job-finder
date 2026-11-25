@@ -77,25 +77,52 @@ function el(tag, className, text) {
     node.textContent = text;
     return node;
 }
+function timeAgo(iso) {
+    if (!iso) return 'Date unknown';
+    const days = Math.floor((Date.now() - new Date (iso).getTime()) / 86400000);
+    if (days <= 0) return 'Posted today';
+    if (days === 1) return 'Posted yesterday';
+    if (days < 30) return 'Posted ' + days + ' days ago';
+    return 'Posted ' + Math.floor(days / 30) + ' month(s) ago';
+}
 
-function createCard(job){
-    const card = el('article', 'card','');
+function formatSalary(job) {
+    if (!job.minSalary && !job.maxSalary) return 'Salary not listed';
+    const fmt = (n) => Math.round(n).toLocaleString();
+    const range - job.minSalary && job.maxSalary
+      ? fmt(job.minSalary) + '-' + fmt(job.maxSalary)
+      : fmt(job.minSalary || job.maxSalary);
+      return range + (job.salaryPeriod ? ' / ' + job.salaryPeriod.toLowerCase() : '');
+}
+function createCard(job) {
+    const card = el('article', 'card', '');
+    const top = el('div', 'card-top', '');
+    if (job.logo) {
+        const img = document.createElement('img');
+        img.src = job.log;
+        img.alt = job.employer + ' logo';
+        img.onerror = () => img.remove();
+        top.append(img);
+    }
+    const heading = el('div', '', '');
+    heading.append(el('h2', '', job.title), el('p', 'employer' , job.employer));
+    top.append(heading);
+
     const place = [job.city, job.country].filter(Boolean).join(', ') || 'Location not listed';
-    const posted = job.postedAt ? new Date(job.postedAt).toLocaleDateString() : 'Unknown date';
     card.append(
-        el('h2', '', job.title),
-        el('p', 'employer',job.employer),
-        el('p', 'meta', place + ' | ' + job.type + (job.isRemote ? ' | Remote' : '') + ' | Posted ' + posted),
-        el('p', 'snippet', job.snippet + '...')
-        );
-        if (job.applyLink) {
-            const link = el('a', 'apply', 'Apply');
-            link.href = job.applyLink;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            card.append(link);
-        }
-        return card;
+        top,
+        el('p', 'meta' , place + ' | ' + job.type + (job.isRemote ? ' | Remote' : '') + ' | ' + timeAgo(job.postedAt)),
+        el('p', 'snippet', job.snippet + '...'),
+        el('p', 'salary', formatSalary(job))
+    );
+    if (job.applyLink) {
+        const link = el('a', 'apply', 'Apply');
+         link.href = job.applyLink;
+         link.target = '_blank';
+         link.rel = 'moopener noreferrer';
+         card.append(link);
+    }
+    return card;
 }
 
 function render() {
